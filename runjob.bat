@@ -26,18 +26,18 @@ IF %num% LEQ %jobs% (
     GOTO addjobtoqueue
 )
 
-rem add a job to the queue that creates a temp file indicating that we are finished (done.csv)
+REM add a job to the queue that creates a temp file indicating that we are finished (done.csv)
 "%alteryx_service%" addtoqueue="%working_dir%\%last_module%",%host%,%secret%
 
 :waittilldone
-IF NOT EXIST %working_dir%\done.csv (
+IF NOT EXIST "%working_dir%\%last_file%" (
 TIMEOUT /t 1 /nobreak
 GOTO waittilldone
 )
 
 set ENDTIME=%TIME%
 
-rem delete the temp file created by the last job
+REM delete the temp file created by the last job
 del "%working_dir%\%last_file%"
 
 echo START: %STARTTIME%
