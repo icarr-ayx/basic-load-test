@@ -1,4 +1,4 @@
-# basic-load-test
+# Alteryx Service Basic Load Test
 A small batch script which can be used to add jobs to the Alteryx Service queue.  
 
 #Server Settings
